@@ -7,7 +7,9 @@
 * The board in Board is a fixed, 4x4 board.
 * 
 */
-#include <iostream>
+#include <iostream>   // std::cout, std::cin, std::endl
+#include <limits>     // std::numeric_limits
+#include <ios>        // std::streamsize
 #include "Board.h"
 #include "Random.h"
 
@@ -39,8 +41,13 @@ int main() {
   bool found = false;
   while (!found) {
     int row = 0, col = 0;
+
     std::cout << "Enter a row and column (e.g. 0 0): ";
     std::cin >> row >> col; // TODO - sanitize the input
+    // Discards all remaining characters on the current line
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     found = (myBoard.at(row, col) == 'X');
     if (!found) {
       myPicks.at(row, col) = ' ';
