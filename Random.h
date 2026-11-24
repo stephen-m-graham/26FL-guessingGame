@@ -7,12 +7,14 @@
 * 
 * @requires <random>
 * @requires C++17 or later
+* 
+* inspired by a Google AI answer to the query "c++ dice class with static generator"
 */
 #pragma once
 #include <random>
 #include <stdexcept>>
 
-class RNG {
+class Die {
 private:
   int sides;
   int currentValue;
@@ -28,7 +30,7 @@ public:
    * @param[in] numSides int the number of possibilities
    * @pre       the number of sides >= 2
    */
-  explicit RNG(int numSides = 6) : sides(numSides), dist(1, numSides) {
+  explicit Die(int numSides = 6) : sides(numSides), dist(1, numSides) {
     if (numSides < 2) {
       throw std::invalid_argument("A die must have at least 2 sides");
     }

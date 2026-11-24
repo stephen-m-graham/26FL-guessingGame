@@ -14,7 +14,7 @@
 int main() {
   Board myBoard; // the board with a hidden X
   Board myPicks; // a board with places I have picked
-  RNG random(4);
+  Die random(4); // a 4-sided die to generater numbers [1-4]
 
   std::cout << "Placing an 'X' at position 2,3" << std::endl;
   myBoard.at(2, 3) = 'X';
@@ -30,8 +30,8 @@ int main() {
 
   std::cout << "Hiding an X somewhere" << std::endl;
   {
-    int hideRow = random.roll() - 1; // -1 because dice are 1-4
-    int hideCol = random.roll() - 1; // -1 because dice are 1-4
+    int hideRow = random.roll() - 1; // -1 because the Die is 1-4
+    int hideCol = random.roll() - 1; // -1 because the Die is 1-4
     myBoard.at(hideRow, hideCol) = 'X';
   }
 
